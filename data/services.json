@@ -1,0 +1,70 @@
+{
+    "services": [
+        {
+            "id": 1,
+            "name": "Plumbing",
+            "description": "Pipe repairs, leak fixes, installations",
+            "icon": "fa-wrench",
+            "serviceList": [
+                {"title": "Leak Repair", "price": 50},
+                {"title": "Pipe Installation", "price": 80},
+                {"title": "Drain Cleaning", "price": 45}
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Electrical",
+            "description": "Wiring, repairs, installations",
+            "icon": "fa-bolt",
+            "serviceList": [
+                {"title": "Wiring Repair", "price": 60},
+                {"title": "Socket Installation", "price": 35},
+                {"title": "Electrical Inspection", "price": 70}
+            ]
+        },
+        {
+            "id": 3,
+            "name": "HVAC",
+            "description": "Heating, ventilation, air conditioning",
+            "icon": "fa-snowflake",
+            "serviceList": [
+                {"title": "AC Repair", "price": 90},
+                {"title": "AC Installation", "price": 150},
+                {"title": "Heating System Repair", "price": 100}
+            ]
+        },
+        {
+            "id": 4,
+            "name": "Cleaning",
+            "description": "Home and office cleaning services",
+            "icon": "fa-broom",
+            "serviceList": [
+                {"title": "Deep Cleaning", "price": 120},
+                {"title": "Regular Cleaning", "price": 60},
+                {"title": "Move-out Cleaning", "price": 150}
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Painting",
+            "description": "Interior and exterior painting",
+            "icon": "fa-paint-roller",
+            "serviceList": [
+                {"title": "Room Painting", "price": 200},
+                {"title": "Wall Touch-up", "price": 50},
+                {"title": "Full House Painting", "price": 800}
+            ]
+        },
+        {
+            "id": 6,
+            "name": "Carpentry",
+            "description": "Furniture repair, woodwork",
+            "icon": "fa-hammer",
+            "serviceList": [
+                {"title": "Furniture Repair", "price": 70},
+                {"title": "Door Installation", "price": 100},
+                {"title": "Custom Shelving", "price": 150}
+            ]
+        }
+    ]
+}

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - HomeServe</title>
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+    <!-- ==================== HEADER ==================== -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                Home<span>Serve</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+            </ul>
+            
+            <div class="nav-buttons" id="navButtons">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="register.html" class="btn btn-primary">Sign Up</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ==================== REGISTRATION FORM ==================== -->
+    <main>
+        <div class="form-container">
+            <h2>Create Account</h2>
+            
+            <!-- Alert Message Container -->
+            <div id="alertContainer"></div>
+            
+            <!-- Account Type Toggle -->
+            <div class="form-group">
+                <label>I want to:</label>
+                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                    <button type="button" class="btn btn-primary" id="btnUser" style="flex: 1;">
+                        <i class="fas fa-user"></i> Hire Services
+                    </button>
+                    <button type="button" class="btn btn-outline" id="btnProvider" style="flex: 1;">
+                        <i class="fas fa-tools"></i> Provide Services
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Registration Form -->
+            <form id="registerForm" method="POST" novalidate="novalidate">
+                <!-- Hidden field for user type -->
+                <input type="hidden" id="userType" name="userType" value="user" />
+                
+                <!-- Full Name -->
+                <div class="form-group">
+                    <label for="fullName">Full Name <span style="color: red;">*</span></label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" />
+                    <span class="error-message" id="fullNameError"></span>
+                </div>
+                
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email">Email Address <span style="color: red;">*</span></label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" />
+                    <span class="error-message" id="emailError"></span>
+                </div>
+                
+                <!-- Phone -->
+                <div class="form-group">
+                    <label for="phone">Phone Number <span style="color: red;">*</span></label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" />
+                    <span class="error-message" id="phoneError"></span>
+                </div>
+                
+                <!-- Password -->
+                <div class="form-group">
+                    <label for="password">Password <span style="color: red;">*</span></label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" />
+                    <span class="error-message" id="passwordError"></span>
+                </div>
+                
+                <!-- Confirm Password -->
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password <span style="color: red;">*</span></label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" />
+                    <span class="error-message" id="confirmPasswordError"></span>
+                </div>
+                
+                <!-- Provider-only fields (hidden by default) -->
+                <div id="providerFields" style="display: none;">
+                    <!-- Service Category -->
+                    <div class="form-group">
+                        <label for="serviceCategory">Service Category <span style="color: red;">*</span></label>
+                        <select id="serviceCategory" name="serviceCategory">
+                            <option value="">Select your service</option>
+                            <option value="1">Plumbing</option>
+                            <option value="2">Electrical</option>
+                            <option value="3">HVAC</option>
+                            <option value="4">Cleaning</option>
+                            <option value="5">Painting</option>
+                            <option value="6">Carpentry</option>
+                        </select>
+                        <span class="error-message" id="serviceCategoryError"></span>
+                    </div>
+                    
+                    <!-- Experience Years -->
+                    <div class="form-group">
+                        <label for="experience">Years of Experience <span style="color: red;">*</span></label>
+                        <input type="number" id="experience" name="experience" placeholder="Years of experience" min="0" max="50" />
+                        <span class="error-message" id="experienceError"></span>
+                    </div>
+                    
+                    <!-- Hourly Rate -->
+                    <div class="form-group">
+                        <label for="hourlyRate">Hourly Rate ($) <span style="color: red;">*</span></label>
+                        <input type="number" id="hourlyRate" name="hourlyRate" placeholder="Your hourly rate" min="1" step="0.01" />
+                        <span class="error-message" id="hourlyRateError"></span>
+                    </div>
+                    
+                    <!-- Bio -->
+                    <div class="form-group">
+                        <label for="bio">Bio / Description</label>
+                        <textarea id="bio" name="bio" placeholder="Tell us about yourself and your experience..."></textarea>
+                    </div>
+                </div>
+                
+                <!-- User-only fields -->
+                <div id="userFields">
+                    <!-- Address -->
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea id="address" name="address" placeholder="Enter your address"></textarea>
+                    </div>
+                </div>
+                
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+                    <i class="fas fa-user-plus"></i> Create Account
+                </button>
+            </form>
+            
+            <div class="form-footer">
+                <p>Already have an account? <a href="login.html">Login here</a></p>
+            </div>
+        </div>
+    </main>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/validation.js"></script>
+    
+    <!-- Page-specific script -->
+    <script>
+        // Toggle between User and Provider registration
+        document.getElementById('btnUser').addEventListener('click', function() {
+            document.getElementById('userType').value = 'user';
+            this.classList.remove('btn-outline');
+            this.classList.add('btn-primary');
+            document.getElementById('btnProvider').classList.remove('btn-primary');
+            document.getElementById('btnProvider').classList.add('btn-outline');
+            document.getElementById('providerFields').style.display = 'none';
+            document.getElementById('userFields').style.display = 'block';
+        });
+        
+        document.getElementById('btnProvider').addEventListener('click', function() {
+            document.getElementById('userType').value = 'provider';
+            this.classList.remove('btn-outline');
+            this.classList.add('btn-primary');
+            document.getElementById('btnUser').classList.remove('btn-primary');
+            document.getElementById('btnUser').classList.add('btn-outline');
+            document.getElementById('providerFields').style.display = 'block';
+            document.getElementById('userFields').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

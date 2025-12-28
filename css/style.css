@@ -1,0 +1,1015 @@
+/* ================================================
+   HOME SERVICE BOOKING PLATFORM - MAIN STYLES
+   ================================================ */
+
+/* -------------------- CSS Reset -------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* -------------------- Root Variables -------------------- */
+:root {
+    --primary-color: #2563eb;
+    --primary-dark: #1d4ed8;
+    --secondary-color: #10b981;
+    --accent-color: #f59e0b;
+    --dark-color: #1f2937;
+    --light-color: #f3f4f6;
+    --white-color: #ffffff;
+    --danger-color: #ef4444;
+    --success-color: #22c55e;
+    --gray-color: #6b7280;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* -------------------- Base Styles -------------------- */
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--dark-color);
+    background-color: var(--light-color);
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* -------------------- Utility Classes -------------------- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+
+/* -------------------- Header & Navigation -------------------- */
+.header {
+    background-color: var(--white-color);
+    box-shadow: var(--box-shadow);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.logo span {
+    color: var(--secondary-color);
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--dark-color);
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* -------------------- Buttons -------------------- */
+.btn {
+    display: inline-block;
+    padding: 10px 24px;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+}
+
+.btn-secondary:hover {
+    background-color: #0ea572;
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline:hover {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    color: var(--white-color);
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+/* -------------------- Hero Section -------------------- */
+.hero {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: var(--white-color);
+    padding: 120px 20px 80px;
+    margin-top: 70px;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+/* -------------------- Search Box -------------------- */
+.search-box {
+    background-color: var(--white-color);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-box form {
+    display: flex;
+    gap: 10px;
+}
+
+.search-box input,
+.search-box select {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+}
+
+.search-box input:focus,
+.search-box select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* -------------------- Sections -------------------- */
+.section {
+    padding: 60px 20px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title h2 {
+    font-size: 2rem;
+    color: var(--dark-color);
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: var(--gray-color);
+}
+
+/* -------------------- Service Categories (Using Floats) -------------------- */
+.categories-grid {
+    margin: 0 -15px;
+}
+
+.categories-grid::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.category-card {
+    float: left;
+    width: 33.333%;
+    padding: 15px;
+}
+
+.category-card-inner {
+    background-color: var(--white-color);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    height: 100%;
+}
+
+.category-card-inner:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.category-icon {
+    width: 70px;
+    height: 70px;
+    background-color: var(--light-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+}
+
+.category-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--dark-color);
+}
+
+.category-card p {
+    color: var(--gray-color);
+    font-size: 0.9rem;
+}
+
+/* -------------------- Provider Cards (Using Floats) -------------------- */
+.providers-grid {
+    margin: 0 -15px;
+}
+
+.providers-grid::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.provider-card {
+    float: left;
+    width: 25%;
+    padding: 15px;
+}
+
+.provider-card-inner {
+    background-color: var(--white-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+}
+
+.provider-card-inner:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.provider-image {
+    width: 100%;
+    height: 200px;
+    background-color: var(--light-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: var(--gray-color);
+}
+
+.provider-info {
+    padding: 20px;
+}
+
+.provider-info h4 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.provider-category {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.provider-rating {
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.provider-rate {
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+/* -------------------- Forms -------------------- */
+.form-container {
+    max-width: 500px;
+    margin: 100px auto 50px;
+    padding: 40px;
+    background-color: var(--white-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--dark-color);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--dark-color);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Form Validation Styles */
+.form-group input.error,
+.form-group select.error,
+.form-group textarea.error {
+    border-color: var(--danger-color);
+}
+
+.form-group input.success,
+.form-group select.success,
+.form-group textarea.success {
+    border-color: var(--success-color);
+}
+
+.error-message {
+    color: var(--danger-color);
+    font-size: 0.85rem;
+    margin-top: 5px;
+    display: none;
+}
+
+.error-message.show {
+    display: block;
+}
+
+.form-footer {
+    text-align: center;
+    margin-top: 20px;
+    color: var(--gray-color);
+}
+
+/* -------------------- Dashboard -------------------- */
+.dashboard {
+    margin-top: 70px;
+    padding: 30px 20px;
+}
+
+.dashboard-header {
+    margin-bottom: 30px;
+}
+
+.dashboard-header h1 {
+    font-size: 1.8rem;
+    color: var(--dark-color);
+}
+
+/* Dashboard Layout Using Floats */
+.dashboard-content {
+    margin: 0 -15px;
+}
+
+.dashboard-content::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.dashboard-sidebar {
+    float: left;
+    width: 25%;
+    padding: 15px;
+}
+
+.dashboard-main {
+    float: left;
+    width: 75%;
+    padding: 15px;
+}
+
+.sidebar-menu {
+    background-color: var(--white-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+}
+
+.sidebar-menu a {
+    display: block;
+    padding: 15px 20px;
+    color: var(--dark-color);
+    border-bottom: 1px solid var(--light-color);
+    transition: var(--transition);
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.sidebar-menu a i {
+    margin-right: 10px;
+    width: 20px;
+}
+
+/* Dashboard Cards */
+.stats-grid {
+    margin: 0 -10px 30px;
+}
+
+.stats-grid::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.stat-card {
+    float: left;
+    width: 33.333%;
+    padding: 10px;
+}
+
+.stat-card-inner {
+    background-color: var(--white-color);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    box-shadow: var(--box-shadow);
+}
+
+.stat-card-inner h3 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.stat-card-inner p {
+    color: var(--gray-color);
+}
+
+/* Bookings Table */
+.bookings-table-container {
+    background-color: var(--white-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+}
+
+.bookings-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.bookings-table th,
+.bookings-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--light-color);
+}
+
+.bookings-table th {
+    background-color: var(--light-color);
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.bookings-table tr:hover {
+    background-color: #f9fafb;
+}
+
+/* Status Badges */
+.status {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.status-pending {
+    background-color: #fef3c7;
+    color: #d97706;
+}
+
+.status-accepted {
+    background-color: #dbeafe;
+    color: #2563eb;
+}
+
+.status-completed {
+    background-color: #d1fae5;
+    color: #059669;
+}
+
+.status-cancelled {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+/* -------------------- Booking Page -------------------- */
+.booking-section {
+    margin-top: 70px;
+    padding: 30px 20px;
+}
+
+.booking-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.booking-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.booking-steps::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #ddd;
+    z-index: 0;
+}
+
+.step {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    background-color: var(--light-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    font-weight: 600;
+    color: var(--gray-color);
+}
+
+.step.active .step-number {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.step.completed .step-number {
+    background-color: var(--success-color);
+    color: var(--white-color);
+}
+
+.step-label {
+    font-size: 0.9rem;
+    color: var(--gray-color);
+}
+
+.step.active .step-label {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.booking-form-container {
+    background-color: var(--white-color);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: var(--box-shadow);
+}
+
+/* -------------------- Reviews -------------------- */
+.review-card {
+    background-color: var(--white-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: var(--box-shadow);
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.review-avatar {
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white-color);
+    font-weight: 600;
+    margin-right: 15px;
+}
+
+.review-info h4 {
+    font-size: 1rem;
+    margin-bottom: 3px;
+}
+
+.review-rating {
+    color: var(--accent-color);
+}
+
+.review-text {
+    color: var(--gray-color);
+    line-height: 1.7;
+}
+
+/* -------------------- Testimonials -------------------- */
+.testimonials-grid {
+    margin: 0 -15px;
+}
+
+.testimonials-grid::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.testimonial-card {
+    float: left;
+    width: 33.333%;
+    padding: 15px;
+}
+
+.testimonial-card-inner {
+    background-color: var(--white-color);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: var(--box-shadow);
+    height: 100%;
+}
+
+.testimonial-text {
+    font-style: italic;
+    color: var(--gray-color);
+    margin-bottom: 20px;
+    line-height: 1.7;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+}
+
+.testimonial-avatar {
+    width: 50px;
+    height: 50px;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white-color);
+    font-weight: 600;
+    margin-right: 15px;
+}
+
+/* -------------------- Footer -------------------- */
+.footer {
+    background-color: var(--dark-color);
+    color: var(--white-color);
+    padding: 60px 20px 30px;
+}
+
+.footer-grid {
+    margin: 0 -15px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-grid::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.footer-col {
+    float: left;
+    width: 25%;
+    padding: 15px;
+}
+
+.footer-col h4 {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: var(--white-color);
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    color: #9ca3af;
+    transition: var(--transition);
+}
+
+.footer-col ul li a:hover {
+    color: var(--white-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    margin-top: 30px;
+    border-top: 1px solid #374151;
+    color: #9ca3af;
+}
+
+/* -------------------- Alerts / Messages -------------------- */
+.alert {
+    padding: 15px 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+}
+
+.alert-success {
+    background-color: #d1fae5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
+
+.alert-error {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.alert-warning {
+    background-color: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fde68a;
+}
+
+/* -------------------- Modal -------------------- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal {
+    background-color: var(--white-color);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-header h3 {
+    font-size: 1.3rem;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--gray-color);
+}
+
+/* -------------------- Loading Spinner -------------------- */
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--light-color);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* -------------------- Responsive Design -------------------- */
+@media screen and (max-width: 992px) {
+    .category-card,
+    .testimonial-card {
+        width: 50%;
+    }
+    
+    .provider-card {
+        width: 50%;
+    }
+    
+    .dashboard-sidebar {
+        width: 30%;
+    }
+    
+    .dashboard-main {
+        width: 70%;
+    }
+    
+    .footer-col {
+        width: 50%;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .search-box form {
+        flex-direction: column;
+    }
+    
+    .category-card,
+    .testimonial-card,
+    .provider-card {
+        width: 100%;
+        float: none;
+    }
+    
+    .stat-card {
+        width: 100%;
+        float: none;
+    }
+    
+    .dashboard-sidebar,
+    .dashboard-main {
+        width: 100%;
+        float: none;
+    }
+    
+    .footer-col {
+        width: 100%;
+        float: none;
+    }
+    
+    .bookings-table {
+        font-size: 0.85rem;
+    }
+    
+    .bookings-table th,
+    .bookings-table td {
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .form-container {
+        margin: 80px 15px 30px;
+        padding: 25px;
+    }
+    
+    .hero {
+        padding: 100px 15px 60px;
+    }
+    
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+    
+    .btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}

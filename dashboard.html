@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - HomeServe</title>
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+    <!-- ==================== HEADER ==================== -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                Home<span>Serve</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+            
+            <div class="nav-buttons" id="navButtons">
+                <!-- Will be updated by JavaScript -->
+            </div>
+        </nav>
+    </header>
+
+    <!-- ==================== DASHBOARD ==================== -->
+    <main class="dashboard">
+        <div class="container">
+            <!-- Dashboard Header -->
+            <div class="dashboard-header">
+                <h1>Welcome, <span id="userNameDisplay">User</span>!</h1>
+                <p style="color: #6b7280;">Manage your bookings and account settings</p>
+            </div>
+            
+            <!-- Dashboard Content -->
+            <div class="dashboard-content clearfix">
+                <!-- Sidebar -->
+                <aside class="dashboard-sidebar">
+                    <nav class="sidebar-menu">
+                        <a href="#" class="active" data-tab="bookings">
+                            <i class="fas fa-calendar-alt"></i> My Bookings
+                        </a>
+                        <a href="#" data-tab="profile">
+                            <i class="fas fa-user"></i> Profile
+                        </a>
+                        <a href="services.html">
+                            <i class="fas fa-plus"></i> Book New Service
+                        </a>
+                        <a href="#" onclick="logout(); return false;">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </nav>
+                </aside>
+                
+                <!-- Main Content -->
+                <div class="dashboard-main">
+                    <!-- Stats Cards -->
+                    <div class="stats-grid clearfix">
+                        <div class="stat-card">
+                            <div class="stat-card-inner">
+                                <h3 id="totalBookings">0</h3>
+                                <p>Total Bookings</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-card-inner">
+                                <h3 id="pendingBookings">0</h3>
+                                <p>Pending</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-card-inner">
+                                <h3 id="completedBookings">0</h3>
+                                <p>Completed</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Bookings Tab -->
+                    <div id="bookingsTab" class="tab-content">
+                        <h2 style="margin-bottom: 20px;">My Bookings</h2>
+                        
+                        <div class="bookings-table-container">
+                            <table class="bookings-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Service</th>
+                                        <th>Provider</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bookingsTableBody">
+                                    <tr>
+                                        <td colspan="6" style="text-align: center;">
+                                            <div class="spinner"></div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- No Bookings Message -->
+                        <div id="noBookings" style="display: none; text-align: center; padding: 40px;">
+                            <i class="fas fa-calendar-times" style="font-size: 3rem; color: #ccc; margin-bottom: 20px;"></i>
+                            <h3>No bookings yet</h3>
+                            <p style="color: #6b7280; margin-bottom: 20px;">You haven't made any bookings yet.</p>
+                            <a href="services.html" class="btn btn-primary">Browse Services</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Profile Tab -->
+                    <div id="profileTab" class="tab-content" style="display: none;">
+                        <h2 style="margin-bottom: 20px;">My Profile</h2>
+                        
+                        <div class="booking-form-container">
+                            <div id="profileAlertContainer"></div>
+                            
+                            <form id="profileForm" novalidate="novalidate">
+                                <div class="form-group">
+                                    <label for="profileName">Full Name</label>
+                                    <input type="text" id="profileName" name="fullName" />
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="profileEmail">Email Address</label>
+                                    <input type="email" id="profileEmail" name="email" readonly="readonly" style="background-color: #f3f4f6;" />
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="profilePhone">Phone Number</label>
+                                    <input type="tel" id="profilePhone" name="phone" />
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="profileAddress">Address</label>
+                                    <textarea id="profileAddress" name="address"></textarea>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i> Save Changes
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ==================== REVIEW MODAL ==================== -->
+    <div class="modal-overlay" id="reviewModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Leave a Review</h3>
+                <button class="modal-close" onclick="closeReviewModal()">&times;</button>
+            </div>
+            
+            <form id="reviewForm">
+                <input type="hidden" id="reviewBookingId" name="booking_id" />
+                <input type="hidden" id="reviewProviderId" name="provider_id" />
+                
+                <div class="form-group">
+                    <label>Rating</label>
+                    <div id="starRating" style="font-size: 2rem; color: #ddd; cursor: pointer;">
+                        <i class="fas fa-star" data-rating="1"></i>
+                        <i class="fas fa-star" data-rating="2"></i>
+                        <i class="fas fa-star" data-rating="3"></i>
+                        <i class="fas fa-star" data-rating="4"></i>
+                        <i class="fas fa-star" data-rating="5"></i>
+                    </div>
+                    <input type="hidden" id="ratingValue" name="rating" value="0" />
+                </div>
+                
+                <div class="form-group">
+                    <label for="reviewComment">Your Review</label>
+                    <textarea id="reviewComment" name="comment" placeholder="Share your experience..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block">
+                    <i class="fas fa-paper-plane"></i> Submit Review
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==================== BOOKING DETAILS MODAL ==================== -->
+    <div class="modal-overlay" id="bookingDetailsModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Booking Details</h3>
+                <button class="modal-close" onclick="closeBookingDetailsModal()">&times;</button>
+            </div>
+            
+            <div id="bookingDetailsContent"></div>
+        </div>
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer" style="margin-top: 50px;">
+        <div class="footer-bottom">
+            <p>&copy; 2024 HomeServe. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/validation.js"></script>
+    
+    <!-- Dashboard Script -->
+    <script>
+        /**
+         * Initialize Dashboard
+         */
+        function initDashboard() {
+            // Update user name display
+            document.getElementById('userNameDisplay').textContent = SessionManager.getUserName();
+            
+            // Load data
+            loadUserBookings();
+            loadUserProfile();
+            setupTabNavigation();
+            setupStarRating();
+            setupProfileForm();
+            setupReviewForm();
+        }
+        
+        /**
+         * Load user bookings
+         */
+        function loadUserBookings() {
+            fetch('php/get-bookings.php?type=user')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success && data.data.length > 0) {
+                        displayBookings(data.data);
+                        updateStats(data.data);
+                    } else {
+                        document.getElementById('bookingsTableBody').innerHTML = '';
+                        document.getElementById('noBookings').style.display = 'block';
+                        document.querySelector('.bookings-table-container').style.display = 'none';
+                        updateStats([]);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('bookingsTableBody').innerHTML = '<tr><td colspan="6" style="text-align: center; color: red;">Error loading bookings</td></tr>';
+                });
+        }
+        
+        /**
+         * Display bookings in table
+         */
+        function displayBookings(bookings) {
+            const tbody = document.getElementById('bookingsTableBody');
+            
+            document.getElementById('noBookings').style.display = 'none';
+            document.querySelector('.bookings-table-container').style.display = 'block';
+            
+            let html = '';
+            bookings.forEach(booking => {
+                const statusClass = 'status-' + booking.status;
+                const formattedDate = formatDate(booking.booking_date);
+                
+                let actions = `<button class="btn btn-outline" style="padding: 5px 10px; font-size: 0.85rem;" onclick="viewBookingDetails(${booking.booking_id})">View</button>`;
+                
+                if (booking.status === 'pending') {
+                    actions += ` <button class="btn btn-danger" style="padding: 5px 10px; font-size: 0.85rem;" onclick="cancelBooking(${booking.booking_id})">Cancel</button>`;
+                }
+                
+                if (booking.status === 'completed' && !booking.has_review) {
+                    actions += ` <button class="btn btn-secondary" style="padding: 5px 10px; font-size: 0.85rem;" onclick="openReviewModal(${booking.booking_id}, ${booking.provider_id})">Review</button>`;
+                }
+                
+                html += `
+                    <tr>
+                        <td>#${booking.booking_id}</td>
+                        <td>${escapeHtml(booking.category_name) || 'N/A'}</td>
+                        <td>${escapeHtml(booking.provider_name) || 'N/A'}</td>
+                        <td>${formattedDate}</td>
+                        <td><span class="status ${statusClass}">${booking.status.charAt(0).toUpperCase() + booking.status.slice(1)}</span></td>
+                        <td>${actions}</td>
+                    </tr>
+                `;
+            });
+            
+            tbody.innerHTML = html;
+        }
+        
+        /**
+         * Update stats
+         */
+        function updateStats(bookings) {
+            document.getElementById('totalBookings').textContent = bookings.length;
+            document.getElementById('pendingBookings').textContent = bookings.filter(b => b.status === 'pending').length;
+            document.getElementById('completedBookings').textContent = bookings.filter(b => b.status === 'completed').length;
+        }
+        
+        /**
+         * Load user profile
+         */
+        function loadUserProfile() {
+            fetch('php/get-profile.php?type=user')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById('profileName').value = data.data.full_name || '';
+                        document.getElementById('profileEmail').value = data.data.email || '';
+                        document.getElementById('profilePhone').value = data.data.phone || '';
+                        document.getElementById('profileAddress').value = data.data.address || '';
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+        
+        /**
+         * Setup tab navigation
+         */
+        function setupTabNavigation() {
+            const tabLinks = document.querySelectorAll('.sidebar-menu a[data-tab]');
+            
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    tabLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    document.querySelectorAll('.tab-content').forEach(tab => tab.style.display = 'none');
+                    
+                    const tabId = this.getAttribute('data-tab') + 'Tab';
+                    document.getElementById(tabId).style.display = 'block';
+                });
+            });
+        }
+        
+        /**
+         * Setup star rating
+         */
+        function setupStarRating() {
+            const stars = document.querySelectorAll('#starRating i');
+            
+            stars.forEach(star => {
+                star.addEventListener('click', function() {
+                    const rating = this.getAttribute('data-rating');
+                    document.getElementById('ratingValue').value = rating;
+                    updateStarDisplay(rating);
+                });
+                
+                star.addEventListener('mouseover', function() {
+                    updateStarDisplay(this.getAttribute('data-rating'));
+                });
+                
+                star.addEventListener('mouseout', function() {
+                    updateStarDisplay(document.getElementById('ratingValue').value);
+                });
+            });
+        }
+        
+        function updateStarDisplay(rating) {
+            document.querySelectorAll('#starRating i').forEach(s => {
+                s.style.color = s.getAttribute('data-rating') <= rating ? '#f59e0b' : '#ddd';
+            });
+        }
+        
+        /**
+         * View booking details
+         */
+        function viewBookingDetails(bookingId) {
+            fetch('php/get-booking-details.php?id=' + bookingId)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const booking = data.data;
+                        const statusClass = 'status-' + booking.status;
+                        
+                        document.getElementById('bookingDetailsContent').innerHTML = `
+                            <div style="margin-bottom: 15px;"><strong>Booking ID:</strong> #${booking.booking_id}</div>
+                            <div style="margin-bottom: 15px;"><strong>Service:</strong> ${escapeHtml(booking.category_name) || 'N/A'}</div>
+                            <div style="margin-bottom: 15px;"><strong>Provider:</strong> ${escapeHtml(booking.provider_name) || 'N/A'}</div>
+                            <div style="margin-bottom: 15px;"><strong>Date:</strong> ${formatDate(booking.booking_date)}</div>
+                            <div style="margin-bottom: 15px;"><strong>Time:</strong> ${booking.booking_time}</div>
+                            <div style="margin-bottom: 15px;"><strong>Address:</strong> ${escapeHtml(booking.address)}</div>
+                            <div style="margin-bottom: 15px;"><strong>Description:</strong> ${escapeHtml(booking.description) || 'N/A'}</div>
+                            <div style="margin-bottom: 15px;"><strong>Status:</strong> <span class="status ${statusClass}">${booking.status.charAt(0).toUpperCase() + booking.status.slice(1)}</span></div>
+                            <div style="margin-bottom: 15px;"><strong>Price:</strong> $${booking.total_price}</div>
+                        `;
+                        
+                        document.getElementById('bookingDetailsModal').classList.add('active');
+                    } else {
+                        alert('Error loading booking details');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error loading booking details');
+                });
+        }
+        
+        function closeBookingDetailsModal() {
+            document.getElementById('bookingDetailsModal').classList.remove('active');
+        }
+        
+        /**
+         * Cancel booking
+         */
+        function cancelBooking(bookingId) {
+            if (confirm('Are you sure you want to cancel this booking?')) {
+                fetch('php/update-booking.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: 'booking_id=' + bookingId + '&status=cancelled'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.success ? 'Booking cancelled successfully' : (data.message || 'Error cancelling booking'));
+                    if (data.success) loadUserBookings();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error cancelling booking');
+                });
+            }
+        }
+        
+        /**
+         * Open review modal
+         */
+        function openReviewModal(bookingId, providerId) {
+            document.getElementById('reviewBookingId').value = bookingId;
+            document.getElementById('reviewProviderId').value = providerId;
+            document.getElementById('ratingValue').value = 0;
+            document.getElementById('reviewComment').value = '';
+            updateStarDisplay(0);
+            document.getElementById('reviewModal').classList.add('active');
+        }
+        
+        function closeReviewModal() {
+            document.getElementById('reviewModal').classList.remove('active');
+        }
+        
+        /**
+         * Setup review form
+         */
+        function setupReviewForm() {
+            document.getElementById('reviewForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const rating = document.getElementById('ratingValue').value;
+                if (rating == 0) {
+                    alert('Please select a rating');
+                    return;
+                }
+                
+                const formData = new URLSearchParams();
+                formData.append('booking_id', document.getElementById('reviewBookingId').value);
+                formData.append('provider_id', document.getElementById('reviewProviderId').value);
+                formData.append('rating', rating);
+                formData.append('comment', document.getElementById('reviewComment').value);
+                
+                fetch('php/add-review.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: formData.toString()
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.success ? 'Review submitted successfully!' : (data.message || 'Error submitting review'));
+                    if (data.success) {
+                        closeReviewModal();
+                        loadUserBookings();
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error submitting review');
+                });
+            });
+        }
+        
+        /**
+         * Setup profile form
+         */
+        function setupProfileForm() {
+            document.getElementById('profileForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(this);
+                formData.append('type', 'user');
+                
+                fetch('php/update-profile.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('profileAlertContainer');
+                    container.innerHTML = `<div class="alert alert-${data.success ? 'success' : 'error'}">${data.success ? 'Profile updated successfully!' : data.message}</div>`;
+                    
+                    if (data.success) {
+                        // Update session
+                        const session = SessionManager.getSession();
+                        session.name = document.getElementById('profileName').value;
+                        SessionManager.saveSession(session);
+                        
+                        document.getElementById('userNameDisplay').textContent = session.name;
+                        updateNavigation();
+                    }
+                    
+                    setTimeout(() => container.innerHTML = '', 3000);
+                })
+                .catch(error => console.error('Error:', error));
+            });
+        }
+        
+        // Close modals when clicking outside
+        document.querySelectorAll('.modal-overlay').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) this.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

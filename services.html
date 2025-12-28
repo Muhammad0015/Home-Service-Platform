@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services - HomeServe</title>
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+    <!-- ==================== HEADER ==================== -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                Home<span>Serve</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+            </ul>
+            
+            <div class="nav-buttons" id="navButtons">
+                <!-- Will be updated by JavaScript -->
+            </div>
+        </nav>
+    </header>
+
+    <!-- ==================== PAGE HEADER ==================== -->
+    <section class="hero" style="padding: 100px 20px 50px;">
+        <div class="hero-content">
+            <h1>Our Services</h1>
+            <p>Find the perfect professional for your home service needs</p>
+        </div>
+    </section>
+
+    <!-- ==================== FILTERS ==================== -->
+    <section class="section" style="padding: 30px 20px;">
+        <div class="container">
+            <div class="search-box" style="max-width: 100%;">
+                <form id="filterForm" style="flex-wrap: wrap;">
+                    <select id="categoryFilter" name="category" style="min-width: 200px;">
+                        <option value="">All Categories</option>
+                        <option value="1">Plumbing</option>
+                        <option value="2">Electrical</option>
+                        <option value="3">HVAC</option>
+                        <option value="4">Cleaning</option>
+                        <option value="5">Painting</option>
+                        <option value="6">Carpentry</option>
+                    </select>
+                    <select id="ratingFilter" name="rating" style="min-width: 150px;">
+                        <option value="">Any Rating</option>
+                        <option value="4.5">4.5+ Stars</option>
+                        <option value="4">4+ Stars</option>
+                        <option value="3">3+ Stars</option>
+                    </select>
+                    <select id="priceFilter" name="price" style="min-width: 150px;">
+                        <option value="">Any Price</option>
+                        <option value="0-30">$0 - $30/hr</option>
+                        <option value="30-50">$30 - $50/hr</option>
+                        <option value="50-100">$50+/hr</option>
+                    </select>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-filter"></i> Filter
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SERVICE CATEGORIES ==================== -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Service Categories</h2>
+                <p>Click on a category to see available providers</p>
+            </div>
+            
+            <div class="categories-grid clearfix" id="categoriesGrid">
+                <div class="spinner"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PROVIDERS LIST ==================== -->
+    <section class="section" style="background-color: #fff;">
+        <div class="container">
+            <div class="section-title">
+                <h2 id="providersTitle">All Providers</h2>
+                <p id="providersSubtitle">Browse our verified service professionals</p>
+            </div>
+            
+            <div class="providers-grid clearfix" id="providersGrid">
+                <div class="spinner"></div>
+            </div>
+            
+            <div id="noResults" style="display: none; text-align: center; padding: 40px;">
+                <i class="fas fa-search" style="font-size: 3rem; color: #ccc; margin-bottom: 20px;"></i>
+                <h3>No providers found</h3>
+                <p style="color: #6b7280;">Try adjusting your filters or browse all categories.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="footer-grid clearfix">
+            <div class="footer-col">
+                <h4>Home<span style="color: #10b981;">Serve</span></h4>
+                <p style="color: #9ca3af; margin-top: 10px;">Connecting homeowners with trusted service professionals since 2024.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="register.html">Sign Up</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="services.html?category=1">Plumbing</a></li>
+                    <li><a href="services.html?category=2">Electrical</a></li>
+                    <li><a href="services.html?category=3">HVAC</a></li>
+                    <li><a href="services.html?category=4">Cleaning</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li><a href="mailto:info@homeserve.com"><i class="fas fa-envelope"></i> info@homeserve.com</a></li>
+                    <li><a href="tel:+1234567890"><i class="fas fa-phone"></i> +1 234 567 890</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 HomeServe. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/jquery-handlers.js"></script>
+    
+    <!-- Services Page Script -->
+    <script>
+        /**
+         * Initialize Services Page
+         */
+        function initServicesPage() {
+            loadCategoriesFromXML();
+            
+            // Check for category in URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const categoryId = urlParams.get('category');
+            if (categoryId) {
+                document.getElementById('categoryFilter').value = categoryId;
+            }
+            
+            // Load providers
+            loadProvidersWithFilters();
+            
+            // Setup filter form
+            document.getElementById('filterForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                loadProvidersWithFilters();
+            });
+            
+            // Auto-filter on select change
+            document.querySelectorAll('#filterForm select').forEach(select => {
+                select.addEventListener('change', loadProvidersWithFilters);
+            });
+        }
+        
+        /**
+         * Load categories from XML
+         */
+        function loadCategoriesFromXML() {
+            fetch('data/services.xml')
+                .then(response => response.text())
+                .then(xmlString => {
+                    const parser = new DOMParser();
+                    const xmlDoc = parser.parseFromString(xmlString, 'text/xml');
+                    const categories = xmlDoc.getElementsByTagName('category');
+                    
+                    let html = '';
+                    for (let i = 0; i < categories.length; i++) {
+                        const id = categories[i].getAttribute('id');
+                        const name = categories[i].getElementsByTagName('name')[0].textContent;
+                        const description = categories[i].getElementsByTagName('description')[0].textContent;
+                        const icon = categories[i].getElementsByTagName('icon')[0].textContent;
+                        
+                        html += `
+                            <div class="category-card">
+                                <div class="category-card-inner" onclick="filterByCategory(${id})" style="cursor: pointer;">
+                                    <div class="category-icon">
+                                        <i class="fas ${icon}"></i>
+                                    </div>
+                                    <h3>${name}</h3>
+                                    <p>${description}</p>
+                                </div>
+                            </div>
+                        `;
+                    }
+                    
+                    document.getElementById('categoriesGrid').innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Error loading XML:', error);
+                    // Fallback to JSON
+                    loadCategoriesFromJSON();
+                });
+        }
+        
+        /**
+         * Filter by category
+         */
+        function filterByCategory(categoryId) {
+            document.getElementById('categoryFilter').value = categoryId;
+            loadProvidersWithFilters();
+            document.getElementById('providersGrid').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        /**
+         * Load providers with filters
+         */
+        function loadProvidersWithFilters() {
+            const category = document.getElementById('categoryFilter').value;
+            const rating = document.getElementById('ratingFilter').value;
+            const price = document.getElementById('priceFilter').value;
+            
+            let url = 'php/get-providers.php?';
+            const params = [];
+            
+            if (category) params.push('category=' + category);
+            if (rating) params.push('rating=' + rating);
+            if (price) params.push('price=' + price);
+            
+            url += params.join('&');
+            
+            // Show loading
+            document.getElementById('providersGrid').innerHTML = '<div class="spinner"></div>';
+            document.getElementById('noResults').style.display = 'none';
+            
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success && data.data.length > 0) {
+                        displayProvidersOnServicesPage(data.data);
+                        
+                        // Update title
+                        const categoryNames = {
+                            '1': 'Plumbing', '2': 'Electrical', '3': 'HVAC',
+                            '4': 'Cleaning', '5': 'Painting', '6': 'Carpentry'
+                        };
+                        
+                        document.getElementById('providersTitle').textContent = 
+                            category && categoryNames[category] ? categoryNames[category] + ' Providers' : 'All Providers';
+                    } else {
+                        document.getElementById('providersGrid').innerHTML = '';
+                        document.getElementById('noResults').style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('providersGrid').innerHTML = '';
+                    document.getElementById('noResults').style.display = 'block';
+                });
+        }
+        
+        /**
+         * Display providers on services page
+         */
+        function displayProvidersOnServicesPage(providers) {
+            let html = '';
+            
+            providers.forEach(provider => {
+                const stars = generateStarRating(provider.rating || 0);
+                
+                html += `
+                    <div class="provider-card">
+                        <div class="provider-card-inner">
+                            <div class="provider-image">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="provider-info">
+                                <h4>${escapeHtml(provider.full_name)}</h4>
+                                <p class="provider-category">${escapeHtml(provider.category_name) || 'Service Provider'}</p>
+                                <div class="provider-rating">
+                                    ${stars} (${provider.rating || '0.0'})
+                                </div>
+                                <p class="provider-rate">$${provider.hourly_rate}/hour</p>
+                                <a href="booking.html?provider=${provider.provider_id}" class="btn btn-primary btn-block" style="margin-top: 10px;">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            document.getElementById('providersGrid').innerHTML = html;
+            document.getElementById('noResults').style.display = 'none';
+        }
+        
+        // Make filterByCategory globally available
+        window.filterByCategory = filterByCategory;
+    </script>
+</body>
+</html>

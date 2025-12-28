@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services>
+    <category id="1">
+        <name>Plumbing</name>
+        <description>Pipe repairs, leak fixes, installations</description>
+        <icon>fa-wrench</icon>
+        <serviceList>
+            <service>
+                <title>Leak Repair</title>
+                <price>50</price>
+            </service>
+            <service>
+                <title>Pipe Installation</title>
+                <price>80</price>
+            </service>
+            <service>
+                <title>Drain Cleaning</title>
+                <price>45</price>
+            </service>
+        </serviceList>
+    </category>
+    <category id="2">
+        <name>Electrical</name>
+        <description>Wiring, repairs, installations</description>
+        <icon>fa-bolt</icon>
+        <serviceList>
+            <service>
+                <title>Wiring Repair</title>
+                <price>60</price>
+            </service>
+            <service>
+                <title>Socket Installation</title>
+                <price>35</price>
+            </service>
+            <service>
+                <title>Electrical Inspection</title>
+                <price>70</price>
+            </service>
+        </serviceList>
+    </category>
+    <category id="3">
+        <name>HVAC</name>
+        <description>Heating, ventilation, air conditioning</description>
+        <icon>fa-snowflake</icon>
+        <serviceList>
+            <service>
+                <title>AC Repair</title>
+                <price>90</price>
+            </service>
+            <service>
+                <title>AC Installation</title>
+                <price>150</price>
+            </service>
+            <service>
+                <title>Heating System Repair</title>
+                <price>100</price>
+            </service>
+        </serviceList>
+    </category>
+    <category id="4">
+        <name>Cleaning</name>
+        <description>Home and office cleaning services</description>
+        <icon>fa-broom</icon>
+        <serviceList>
+            <service>
+                <title>Deep Cleaning</title>
+                <price>120</price>
+            </service>
+            <service>
+                <title>Regular Cleaning</title>
+                <price>60</price>
+            </service>
+            <service>
+                <title>Move-out Cleaning</title>
+                <price>150</price>
+            </service>
+        </serviceList>
+    </category>
+    <category id="5">
+        <name>Painting</name>
+        <description>Interior and exterior painting</description>
+        <icon>fa-paint-roller</icon>
+        <serviceList>
+            <service>
+                <title>Room Painting</title>
+                <price>200</price>
+            </service>
+            <service>
+                <title>Wall Touch-up</title>
+                <price>50</price>
+            </service>
+            <service>
+                <title>Full House Painting</title>
+                <price>800</price>
+            </service>
+        </serviceList>
+    </category>
+    <category id="6">
+        <name>Carpentry</name>
+        <description>Furniture repair, woodwork</description>
+        <icon>fa-hammer</icon>
+        <serviceList>
+            <service>
+                <title>Furniture Repair</title>
+                <price>70</price>
+            </service>
+            <service>
+                <title>Door Installation</title>
+                <price>100</price>
+            </service>
+            <service>
+                <title>Custom Shelving</title>
+                <price>150</price>
+            </service>
+        </serviceList>
+    </category>
+</services>

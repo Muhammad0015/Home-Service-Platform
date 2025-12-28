@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HomeServe - Professional Home Services</title>
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+    <!-- ==================== HEADER ==================== -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                Home<span>Serve</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+            </ul>
+            
+            <div class="nav-buttons" id="navButtons">
+                <!-- Will be updated by JavaScript -->
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="register.html" class="btn btn-primary">Sign Up</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Find Trusted Home Service Professionals</h1>
+            <p>Connect with verified plumbers, electricians, cleaners, and more. Book instantly, pay securely, and get quality service guaranteed.</p>
+            
+            <div class="search-box">
+                <form id="searchForm">
+                    <select id="serviceCategory" name="category">
+                        <option value="">Select Service</option>
+                        <option value="1">Plumbing</option>
+                        <option value="2">Electrical</option>
+                        <option value="3">HVAC</option>
+                        <option value="4">Cleaning</option>
+                        <option value="5">Painting</option>
+                        <option value="6">Carpentry</option>
+                    </select>
+                    <button type="submit" class="btn btn-secondary">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SERVICE CATEGORIES ==================== -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Professional services for all your home needs</p>
+            </div>
+            
+            <div class="categories-grid clearfix" id="categoriesGrid">
+                <div class="spinner"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== HOW IT WORKS ==================== -->
+    <section class="section" id="how-it-works" style="background-color: #fff;">
+        <div class="container">
+            <div class="section-title">
+                <h2>How It Works</h2>
+                <p>Book a service in 3 easy steps</p>
+            </div>
+            
+            <div class="categories-grid clearfix">
+                <div class="category-card">
+                    <div class="category-card-inner">
+                        <div class="category-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>1. Choose Service</h3>
+                        <p>Browse our categories and select the service you need for your home.</p>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-card-inner">
+                        <div class="category-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>2. Book Appointment</h3>
+                        <p>Select a convenient date and time, and provide your location details.</p>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-card-inner">
+                        <div class="category-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3>3. Get It Done</h3>
+                        <p>Our verified professional arrives and completes the job to your satisfaction.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== TOP PROVIDERS ==================== -->
+    <section class="section" id="providers">
+        <div class="container">
+            <div class="section-title">
+                <h2>Top Rated Providers</h2>
+                <p>Meet our highly-rated service professionals</p>
+            </div>
+            
+            <div class="providers-grid clearfix" id="providersGrid">
+                <div class="spinner"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== TESTIMONIALS ==================== -->
+    <section class="section" id="testimonials" style="background-color: #fff;">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Customers Say</h2>
+                <p>Real reviews from satisfied customers</p>
+            </div>
+            
+            <div class="testimonials-grid clearfix">
+                <div class="testimonial-card">
+                    <div class="testimonial-card-inner">
+                        <p class="testimonial-text">"Excellent service! The plumber arrived on time and fixed our leak quickly. Very professional and fairly priced."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">JD</div>
+                            <div>
+                                <h4>Jane Doe</h4>
+                                <div class="provider-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-card-inner">
+                        <p class="testimonial-text">"I've used HomeServe multiple times now. The quality of service is consistent and the booking process is so easy!"</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">MS</div>
+                            <div>
+                                <h4>Mike Smith</h4>
+                                <div class="provider-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-card-inner">
+                        <p class="testimonial-text">"The electrician was knowledgeable and explained everything clearly. I felt safe knowing they were verified professionals."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">AL</div>
+                            <div>
+                                <h4>Amy Lee</h4>
+                                <div class="provider-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CALL TO ACTION ==================== -->
+    <section class="section" style="background: linear-gradient(135deg, #10b981, #059669); color: white; text-align: center;">
+        <div class="container">
+            <h2>Ready to Get Started?</h2>
+            <p style="margin: 20px 0; opacity: 0.9;">Join thousands of satisfied customers who trust HomeServe for their home service needs.</p>
+            <a href="register.html" class="btn btn-primary" style="background-color: white; color: #10b981;">Sign Up Now</a>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="footer-grid clearfix">
+            <div class="footer-col">
+                <h4>Home<span style="color: #10b981;">Serve</span></h4>
+                <p style="color: #9ca3af; margin-top: 10px;">Connecting homeowners with trusted service professionals since 2024.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="register.html">Sign Up</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="services.html?category=1">Plumbing</a></li>
+                    <li><a href="services.html?category=2">Electrical</a></li>
+                    <li><a href="services.html?category=3">HVAC</a></li>
+                    <li><a href="services.html?category=4">Cleaning</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li><a href="mailto:info@homeserve.com"><i class="fas fa-envelope"></i> info@homeserve.com</a></li>
+                    <li><a href="tel:+1234567890"><i class="fas fa-phone"></i> +1 234 567 890</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> 123 Main St, City</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 HomeServe. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/jquery-handlers.js"></script>
+</body>
+</html>
